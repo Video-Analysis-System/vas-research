@@ -76,7 +76,7 @@
 
 
 ## Simple Online and Realtime Tracking (SORT)
-- Best algorithm on MOT2015
+- Best algorithm on MOT2015 (at published time)
 
 | Adv | Disadv |
 |-----|--------|
