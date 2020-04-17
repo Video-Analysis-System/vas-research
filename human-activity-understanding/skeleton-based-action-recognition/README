@@ -1,0 +1,1 @@
+This is a new and interesting approach. However, it depends on how good we estimate human poses in the activities and how we can track them through the video. Furthermore, it's not easy to incorporate the context and objects of the actions into the model in order to improve the accuracy. 
