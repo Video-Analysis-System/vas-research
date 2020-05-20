@@ -22,6 +22,9 @@
     - Class prediction: 
       - CrossEntropyLoss with Softmax: Hard Mining Background/Objects.
       - FocalLoss with Sigmoid: put lower weight on easy example, sigmoid is empirically more numerical stable.
+  - Post process:
+    - In most case, detectors usually generates a bunch possible bounding boxes.
+      Therefore, NMS or more recently, SoftNMS, is used as a post-processing technique to suppress overlapping boxes.
 
 *: In some github repo:
   - Networks in the first 2 steps are refered as backbone
@@ -99,8 +102,21 @@ __**__(not sure): detection with highest score
   - Wrong class weight = (1 - \alpha) * pow(p, \gamma)
   - Classification Loss = sum(loss_all_anchor) / number_of_anchor_with_0.5_IoU.
 
-- Evaluation __*__:
+- Regression Loss function (L1 smooth)
+  - Pseudo:
+    ```
+    if L1_dist < 1/9:
+      loss = 0.5 * 9 * L2_dist
+    else:
+      loss = L1_dist - 0.5 / 0.9
+    ```
+  - Smooth L1-loss combines the advantages of L1-loss (steady gradients for large values of x) and L2-loss (less oscillations during updates when x is small).
+
+- Evaluation:
   ![Evaluation Results](./papers/images/eval_results.png)
 
-__*__ slower by 1/2 on pytorch re-implementation (i.e. 32FPS on 512x512), but still faster than original tf implementation)
 
+### Miscellaneous
+- [SoftNMS](./papers/(2017)SoftNMS.pdf) modify the confidence of the detection based on IoU overlap rather than suppressing it completely.
+- [SpineNet](./papers/(2020)SpineNet.pdf) weird design of model.
+- [ResNeSt](./papers/(2020)ResNeSt.pdf) Modified version of the original Resnet, showed to improve downstream tasks such as Object Detection or Instance Segmentation.
