@@ -117,6 +117,20 @@ __**__(not sure): detection with highest score
 
 
 ### Miscellaneous
-- [SoftNMS](./papers/(2017)SoftNMS.pdf) modify the confidence of the detection based on IoU overlap rather than suppressing it completely.
-- [SpineNet](./papers/(2020)SpineNet.pdf) weird design of model.
-- [ResNeSt](./papers/(2020)ResNeSt.pdf) Modified version of the original Resnet, showed to improve downstream tasks such as Object Detection or Instance Segmentation.
+- [SoftNMS](https://arxiv.org/pdf/1704.04503.pdf) modify the confidence of the detection based on IoU overlap rather than suppressing it completely.
+- [SpineNet](https://arxiv.org/pdf/1912.05027.pdf) weird design of model.
+- [ResNeSt](https://arxiv.org/pdf/2004.08955.pdf) Modified version of the original Resnet, showed to improve downstream tasks such as Object Detection or Instance Segmentation. Results shown by Gluoncv imply that changing the backbone to ResNeSt (with SyncBatchNorm) can raise mAP by ~5%.
+  |ResNeSt101|ResNet101|
+  |----|----|
+  |![DCNv1](./papers/images/resnest101.png)|![DCNv1](./papers/images/resnet101.png)|
+- [AdaptiveNMS](https://arxiv.org/pdf/1904.03629.pdf) More effective in crowded scene, but requires additional dense estimation head.
+- [SNIPER](https://arxiv.org/pdf/1805.09300.pdf) Describe an effective way to sample object-region (512x512) to train model (by training a RPN for a few epoch) (Not sure how this is different from RandomIoUCropping). This allows training with large batch_size to utilize BatchNorm. However, SourceCode is not in prevalent DeepLearning Framework; hence, hard to try. Inference and training on Image Pyramid.
+- [DCN](https://arxiv.org/pdf/1703.06211.pdf) Describe 2 modules which can be integrated into existing detection framework. 
+  - Deformable convolution: generalized of dilated convolution, allowing broader and more flexible receptive field. Empirically shown to boost performance of detectors. (normal convol + offset convol)
+  ![DCNv1](./papers/images/dcnv1.png)
+  - Deformable ROI pooling: same as above, pooling with offset. Bins' value are sampled using Interpolation.
+  ![DCNv1](./papers/images/dpool1.png)
+  - Version 2, called Modulated Deformable Convolution/Pooling, added an extra weight \delta_m in [0, 1]. This term mimics attention mechanism. For instance, if top-left ROI is unimportant, \delta_m is close to zero, and vice versa.
+- [CenterNet](https://arxiv.org/pdf/1904.07850.pdf) introduces anchor free approach in Object Detection. The algorithm tries to localize the center point of the object using a heatmap W/R x H/R x C in [0, 1], where 1 indicates object and 0 suggests background. Depending on task, model can regress additional information. For example, object's box size (W, H) or Object's depth (in 3D case). This approach eliminates the necessary of using NMS in post processing. Nevertheless, the author pointed out that the model still suffer from overlapping center points (of 2 Different Objects) when projected into lower resolution feature map.
+   ![CenterNet accuracy vs some prevalent Object Detectors](./papers/images/centernet.png)
+- 
