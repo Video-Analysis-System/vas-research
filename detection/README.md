@@ -115,6 +115,10 @@ __**__(not sure): detection with highest score
 - Evaluation:
   ![Evaluation Results](./papers/images/eval_results.png)
 
+- Speed (reported by authors): on single Tesla V100 without using TensorRT
+  * Note: EfficientDet-d3/4: is a nice trade off between speed and accuracy
+  ![Evaluation Results](./papers/images/efficientdet_speed.png)
+
 
 ### Miscellaneous
 - [SoftNMS](https://arxiv.org/pdf/1704.04503.pdf) modify the confidence of the detection based on IoU overlap rather than suppressing it completely.
@@ -124,13 +128,68 @@ __**__(not sure): detection with highest score
   |----|----|
   |![DCNv1](./papers/images/resnest101.png)|![DCNv1](./papers/images/resnet101.png)|
 - [AdaptiveNMS](https://arxiv.org/pdf/1904.03629.pdf) More effective in crowded scene, but requires additional dense estimation head.
-- [SNIPER](https://arxiv.org/pdf/1805.09300.pdf) Describe an effective way to sample object-region (512x512) to train model (by training a RPN for a few epoch) (Not sure how this is different from RandomIoUCropping). This allows training with large batch_size to utilize BatchNorm. However, SourceCode is not in prevalent DeepLearning Framework; hence, hard to try. Inference and training on Image Pyramid.
+- [SNIPER](https://arxiv.org/pdf/1805.09300.pdf) Describe an effective way to sample object-region (512x512) to train model (by training a RPN for a few epoch) (Not sure how this is different from RandomIoUCropping). This allows training with large batch_size to utilize BatchNorm. However, SourceCode is not in prevalent DeepLearning Framework; hence, hard to try. Inference and training on Image Pyramid to achieve scale invariant.
 - [DCN](https://arxiv.org/pdf/1703.06211.pdf) Describe 2 modules which can be integrated into existing detection framework. 
   - Deformable convolution: generalized of dilated convolution, allowing broader and more flexible receptive field. Empirically shown to boost performance of detectors. (normal convol + offset convol)
   ![DCNv1](./papers/images/dcnv1.png)
   - Deformable ROI pooling: same as above, pooling with offset. Bins' value are sampled using Interpolation.
   ![DCNv1](./papers/images/dpool1.png)
   - Version 2, called Modulated Deformable Convolution/Pooling, added an extra weight \delta_m in [0, 1]. This term mimics attention mechanism. For instance, if top-left ROI is unimportant, \delta_m is close to zero, and vice versa.
-- [CenterNet](https://arxiv.org/pdf/1904.07850.pdf) introduces anchor free approach in Object Detection. The algorithm tries to localize the center point of the object using a heatmap W/R x H/R x C in [0, 1], where 1 indicates object and 0 suggests background. Depending on task, model can regress additional information. For example, object's box size (W, H) or Object's depth (in 3D case). This approach eliminates the necessary of using NMS in post processing. Nevertheless, the author pointed out that the model still suffer from overlapping center points (of 2 Different Objects) when projected into lower resolution feature map.
-   ![CenterNet accuracy vs some prevalent Object Detectors](./papers/images/centernet.png)
-- 
+- [CenterNet - Object-as-Points](https://arxiv.org/pdf/1904.07850.pdf) introduces anchor free approach in Object Detection. The algorithm tries to localize the center point of the object using a heatmap W/R x H/R x C in [0, 1], where 1 indicates object and 0 suggests background. Depending on task, model can regress additional information. For example, object's box size (W, H) or Object's depth (in 3D case). This approach eliminates the necessary of using NMS in post processing. Nevertheless, the author pointed out that the model still suffer from overlapping center points (of 2 Different Objects) when 2 center points are projected into lower resolution feature map.
+  ![CenterNet accuracy vs some prevalent Object Detectors](./papers/images/centernet.png)
+- [CenterNet triplet points](https://arxiv.org/pdf/1904.08189.pdf) is an upgraded version of CornerNet. The model tries to detects the center points in addition of 2 corners points for each objects. The authors realized that corner points has high FD (False Discovery rates = 1 - AP). Therefore, they proposed a solution by checking whether the central region contains the center points (of the same class) or not. Furthermore, they introduced a way to enrich center and corner information, by finding the maximum and minimum values in both horizontal and vertical direction and adding them together (refer to paper for details). Yet, model still relies on Soft-NMS to filter false positive predictions.
+
+- [YOLOv4](https://arxiv.org/pdf/2004.10934.pdf) is an efficient object detection model. 43.5 mAP with 62 FPS (on V100). The model combines several ideas:
+  - Bag-of-specials: CSPDarknet, SPP, PAN, Mish activation, DIoU NMS, ...
+  - Bag-of-freebies: 
+    - Augmentation: CutMix, Mosaic
+    - Regularization: DropBlock
+    - Class label smoothing
+    - Scheduler: Cosine Annealing
+    - ...
+  
+- [DETR - DEtection TRansformer](https://ai.facebook.com/research/publications/end-to-end-object-detection-with-transformers) introduces a new idea to detect an object by treating image as a series of blocks. In the first stage, an CNN is used to extract spatial information. Subsequently, the feature map NxCxHxW is flatten into NxCxHW (together with positional encoding), and later be feed into a Transformer. Afterwards, the decoder outputs a list of "predictions" (100 object queries in default setup) which are passed through an FFN (Feed forward network) to output object-class (including background) and corresponding bounding boxes. Finally, the association (predictions - ground truth) is done by the bipartite loss. (Code not yet fully available - lacking some functions)
+  - Workflow as follow:
+  ![Detection Transformer pipeline](./papers/images/detr.png)
+  - Speed is relatively good (at **27/12/20/10** FPS respectively in the figure)
+  ![Detection Transformer pipeline](./papers/images/detr_speed.png)
+
+- [GIoU loss](https://arxiv.org/pdf/1902.09630.pdf). The authors pointed out that the widely used SmoothL1 loss can results in low IoU boxes. Therefore, they proposed an alternative loss called GIoU .
+  - Formulation: 
+  L_GIoU = 1 - GIoU = 1 - (IoU - (C - Union)/C), where C is the area of "Largest box containing both boxes)
+  - GIoU range from -1 to 1, with 1 denotes high overlapping.
+  ![Correlation between IoU and GIoU](./papers/images/giou.png)
+
+- [Cascade RCNN](https://arxiv.org/pdf/1906.09756.pdf). The authors redesign the network architecture in cascade mode (Right figure). Basically, the IoU to filter objects increases from stage-to-stage [0.5, 0.6, 0.7]. The results show clear performance (by ~2 mAP) compared to Faster-RCNN regardless of backbones.
+  - Normal Faster-RCNN vs Cascade-RCNN
+  ![Correlation between IoU and GIoU](./papers/images/cascade_rcnn.png)
+  
+  |Faster-RCNN|Cascade-RCNN|
+  |-----|-----|
+  |![Correlation between IoU and GIoU](./papers/images/faster_x101.png)|![Correlation between IoU and GIoU](./papers/images/cascade_x101.png)|
+
+- [YOLO v3](https://arxiv.org/pdf/1804.02767.pdf). Implemented in (https://github.com/ultralytics/yolov3) Achieve comparable accuracy (43.1 single-scale 45.6 multi-scale on **coco2014 - different train/val split**)while running at real-time speed (30 FPS on GTX 1070)
+
+- [DetectoRS](https://arxiv.org/pdf/2006.02334v1.pdf) introduces 2 plug-and-play modules to enhance performance of base-line HTC (Hybrid Task Cascade) model.
+  - First is the new multi-scale features: As described by the authors that stimulate *looking twice* mechanism of human's vision.
+
+  |Normal FPN|Recursive Feature Pyramid|
+  |----------|-------------------------|
+  |![FPN](./papers/images/FPN.png)|![RFP](./papers/images/RFP.png)|
+
+  - Second is the Switchable Atrous Convolution (SAC) layer, which try to select which dilation rate (1 or 3 in paper) to detect different size objects. (Result in better large-object detection). Lock means weights are shared (except for \delta_w). The authors argue that objects at different scales can be roughly detected by same weights with different atrous rate; Hence, they inits \w from pretrained model and \delta_w to 0. In addition, both Conv3x3 in SAC module are replaced with DCN.
+  ![SAC](./papers/images/SAC.png)
+  
+  - Result, the model show strong improvement over HTC base-line model and achieve high mAP on coco-testdev (51.3) at 3.9 FPS (according to the paper)
+
+- [Bag Of Freebies](https://arxiv.org/pdf/1902.04103.pdf) illustrates some common tips when training DNN for object detection.
+  - Visually Coherent Image Mixup for Object Detection: showed to increase robustness when handling unprecedented image (such as case described as Elephant in the Room, where the researchers place an Elephant randomly in the room-background-image)
+    ![Mixup](./papers/images/mixup.png)
+  - Label Smoothing:
+  - Data Preprocessing techniques: random cropping, expansion, horizontal flip, resize, brightness, hue, saturation, contrast (with extra case in Object Detection case). The authors also noted that Two-Stage Detectors do not require extensive geometric augmentations due to the nature of ROIpooling.
+  - Training Schedule: Warmup to avoid gradient exploding during the initial iteration (since, in the early of training stage, model tends to receive dominant gradient from negative examples). Secondly, StepLR or CosineAnnealing is frequently used to automatically reduce LR while training.
+  ![Warmup + Reduction over iterations](./papers/images/scheduler.png)
+  - Synchronized Batch Normalization: normal batch normalization method works on single GPU work fine on training ImageNet due to large batch size. Therefore, it is better to gather statistic across GPUs.
+  - Random Shape training for Single-Stage Detectors
+
+- Some proposed to combine segmentation into detector. [Mask RCNN](https://arxiv.org/pdf/1703.06870.pdf) introduces a separate branch to detect mask and a different Pooling layer (RoIAlign). Two added features boost performance of baseline Faster-RCNN by ~1% mAP.
