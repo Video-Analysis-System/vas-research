@@ -47,4 +47,4 @@ Approach of authors in the [paper](./papers/(2014)Low-Complexity Camera Tamper D
 
 ## displace_img_matching:
 - Displacement camera detection based on image matching 
-- Compare two consecutive fr
+- Compare two consecutive frames 
