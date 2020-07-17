@@ -36,3 +36,15 @@ Approach of authors in the [paper](./papers/(2007)Automatic_Control_of_Video_Sur
 |Strength | Weakness|
 |---------|---------|
 |Fast, Reasonable approach (using number of edges) | Not adaptive threshold |
+
+
+## Camera_temper:
+Approach of authors in the [paper](./papers/(2014)Low-Complexity Camera Tamper Detection based on Edge Information.pdf)
+
+- Camera Tamper Detection based on Edge detection and update background subtraction(GMM, MOG)
+- include: Occlusion detection, Displacement detection, Defocusing
+
+
+## displace_img_matching:
+- Displacement camera detection based on image matching 
+- Compare two consecutive fr
