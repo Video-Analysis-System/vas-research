@@ -35,8 +35,7 @@
   - GT: number of ground truth boxes. 
  
   MOTA score (from __*-inf to 1*__) is then defined as follows:
-  
-  MOTA = 1 - (FN + FP + IDSW)/GT
+    - MOTA = 1 - (FN + FP + IDSW)/GT
 
 - ID scores (focus on tracking objects for the longest time possible, inorder not to lose its position) (still ambiguous)
 
@@ -75,7 +74,7 @@
 
 
 
-## Simple Online and Realtime Tracking (SORT)
+## Simple Online and Realtime Tracking ([SORT](https://arxiv.org/abs/1602.00763))
 - Best algorithm on MOT2015 (at published time)
 
 | Adv | Disadv |
@@ -88,3 +87,58 @@
   - Compute IoU and use Hungarian Algorithm to match new detection + kalman tracker (if non-match, create new tracker)
 
 
+## Simple Online and Realtime Tracking with a Deep Association Metric ([DeepSORT](https://arxiv.org/pdf/1703.07402))
+- A substantial improvement of SORT, DeepSORT is able to track objects through longers periods of occlusions, effectively reducing the number of identity switches (A weakness of SORT). This is accomplished by learning a deep association metric on a large-scale person re-identification dataset. Afterwards, during inference phase, authors established measurement-to-track associations using nearest neighbor queries in visual appearance space, leading to 45% lower number of identity switches.
+
+- Approach (similar to SORT):
+  - Use a detector to detect pedestrian
+  - Use Kalman filter to predict trajectories (box center: u,v; aspect ratio: \gamma; height: h; respective velocities)
+  - Association uses motion and appearance information:
+    - Motion uses Mahalanobis distance (?), distances > threshold are excluded
+    - Appearance uses CNN (trained on REID dataset). Cosine similarity is used. Further, a gallery R_k of the last L_k=100 associated appearance descriptor for each track "k".
+    - 2 metrics are combined using weighted sum. However, only appearance metric is used in the paper.
+  - Left unmatched detections are associated with Tracks (of age=1) using IoU + Hungarian Algorithm (same as SORT). This helps to account for sudden appearance changes, e.g. due to partial occlusion with static scene geometry, and to increase robustness against erroneous initialization.
+  
+
+## Towards Real-Time Multi-Object Tracking ([paper](https://arxiv.org/pdf/1909.12605v1.pdf))
+- Authors proposed a MOT system that jointly detects and extract person's appearance embedding in a single forward pass.
+
+- Use single-stage approach. Model extracts feature maps at 1/32, 1/16, 1/8 down-sampling rates. The prediction head is added upon each feature map to output a dense prediction map of size: (6A + D) x H x W, with A is the number of anchors and D is the size of the embedding.
+  - box classification: 2A x H x W: use cross-entropy loss
+  - box regression: 4A x H x W: use L1-smooth loss
+  - dense embedding map: D x H x W: --> FC --> class-wise weight logits --> cross-entropy
+  - Foregrounds with box annotations but without identity annotations are ignored when computing embedding loss. W_emb is usually much lower than W_class = W_box (0.1:64)
+  - Loss are fused using learnable weights.
+
+     ![Model architecture](./papers/images/toward_realtime.png)
+
+- Association:
+  ```
+  frame --> bboxes + appearance embeddings
+  affinity_matrix = affinity_matrix(observed_embeddings, track_pool_embeddings)
+  assignment = Hungarian(observations, tracks, affinity_matrix)
+  new_location = Kalman(prev_tracklets, detections)
+  
+  for each i: 
+    if distance(new_location_i, prev_location_i) > threshold:
+      reject assignment_i
+  
+  # Update tracklet embeddings (\eta = 0.9)
+  tracklet_embed = \eta * tracklet_embed + (1 - \eta) * assigned_embed
+
+  if no assignment_i:
+    tracklet_i <-- lost
+    if lost_time > threshold:
+      track_pool <-- track_pool - tracklet_i
+  ```
+
+## A Simple Baseline for Multi-Object Tracking ([paper](https://arxiv.org/pdf/2004.01888.pdf))
+- Authors identity some existing problems in previous Joint-Detection-REID MOT systems such as: 
+  - Embedding feature is not aligned with detection.
+  - Downscale is large (/8) for learning REID-embedding.
+  - Dimension of REID-embedding is large (Might cause over-fitting to small MOT data). But REID data cannot be utilized since REID-images are cropped images of persons instead of (frame + person_id + boxes).
+
+
+- Track:
+  - frame --> heatmap -(NMS)-> peak center key points --> (box + offset + size + emb)
+  - **UPDATING**
