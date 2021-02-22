@@ -18,10 +18,10 @@ This guide will be improved gradually when we got more time.
   
 
 ## Surveys
-- Going Deeper into Action Recognition: A Survey - 1605.04988
-- Human Action Recognition and Prediction: A Survey - 2020
-- A Survey on Temporal Action Localization
-- A Comprehensive Survey of Vision-Based Human Action Recognition Methods
+- [Going Deeper into Action Recognition: A Survey](https://arxiv.org/abs/1605.04988)
+- [Human Action Recognition and Prediction: A Survey](https://arxiv.org/abs/1806.11230)
+- [A Survey on Temporal Action Localization](https://ieeexplore.ieee.org/document/9062498)
+- [A Comprehensive Survey of Vision-Based Human Action Recognition Methods](https://www.mdpi.com/1424-8220/19/5/1005)
 - [Video Action Understanding: A Tutorial](https://arxiv.org/abs/2010.06647)
 
 ## Papers to read
