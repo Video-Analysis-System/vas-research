@@ -52,4 +52,6 @@ Gonna be updated. In the mean time, please, check the references from the tutori
 
 
 # Datasets
-[Video understanding datasets](https://github.com/yoosan/video-understanding-dataset)
+- [Video understanding datasets](https://github.com/yoosan/video-understanding-dataset)
+- [RWF-2000: An Open Large Scale Video Database for Violence Detection
+](https://arxiv.org/abs/1911.05913)
