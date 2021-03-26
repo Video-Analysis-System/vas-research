@@ -52,6 +52,7 @@ Gonna be updated. In the mean time, please, check the references from the tutori
 
 
 # Datasets
+- The huge dataset Kinetics now can be downloaded from [CVFoundation hosting](https://github.com/cvdfoundation/kinetics-dataset) . So, yeah, no more manual, extremely difficult download from Youtube (YES, YES YES)
 - [Video understanding datasets](https://github.com/yoosan/video-understanding-dataset)
 - [RWF-2000: An Open Large Scale Video Database for Violence Detection
 ](https://arxiv.org/abs/1911.05913)
