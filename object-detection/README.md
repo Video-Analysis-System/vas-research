@@ -1,4 +1,4 @@
-# Relevant object and human detection papers, notes and experimental code will stay here
+# Relevant object and human detection notes and experimental code will stay here
 
 ## Object Detection
 
