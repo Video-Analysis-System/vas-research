@@ -10,7 +10,7 @@ We plan to hold a seminar every Friday afternoon. For now, we'll focus on the to
 | Focal Loss for Dense Object Detection. <br> RetinaFace: Single-stage Dense Face Localisation in the Wild |        | Duong      | 09/12/2022 |
 
 # List of papers to choose for seminars
-This is the initial list of recommended papers that we can choose for our presentation. As our knowledge and skills grow, we'll surely make changes to this list. Please, feel free to add your favourite papers to this collection so that we'll have many more interesting papers to learn from.
+This is an initial list of recommended papers that we can choose for our presentation. As our knowledge and skills grow, we'll surely make changes to this list. Please, feel free to add your favourite papers to this collection so that we'll have many more interesting papers to learn from.
 
 | Papers                                                                         | Code                                                                           | Presenters |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ---------- |
