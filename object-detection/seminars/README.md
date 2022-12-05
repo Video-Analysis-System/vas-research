@@ -1,5 +1,5 @@
 # Introduction
-We plan to hold a seminar every Friday afternoon. For now, we'll focus on the topic of object detection, which is a very important component of our toolbox. In each seminar, each team member will present at least 1 paper and walk through its code so that hopefully, at the end, everyone will have a good understanding of the paper and will be able to experiment with the code easily.
+We plan to hold a seminar every Friday afternoon. For now, we'll focus on the topic of object detection, which is a very important component of our toolbox. In each seminar, a team member will present at least 1 paper and walk through its code so that hopefully, at the end, everyone will have a good understanding of the paper and will be able to experiment with the code easily.
 
 # List of seminars
 | Papers                                                                                                   | Slides | Presenters | Date       |
