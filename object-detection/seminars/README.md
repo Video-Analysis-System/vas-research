@@ -22,13 +22,13 @@ This is an initial list of recommended papers that we can choose for our present
 | [YOLOv3: An Incremental Improvement](https://arxiv.org/abs/1804.02767)                                                         |            |       |
 | [YOLOv4: Optimal Speed and Accuracy of Object Detection](https://arxiv.org/abs/2004.10934)                                     |            |       |
 | [Scaled-YOLOv4: Scaling Cross Stage Partial Network](https://arxiv.org/abs/2011.08036)                                         |            |       |
-| [Attention Is All You Need](https://arxiv.org/abs/1706.03762)                                                                  |            |       |
+| [Attention Is All You Need](https://arxiv.org/abs/1706.03762)                                                                  |    Tung    |       |
 | [End-to-End Object Detection with Transformers](https://arxiv.org/abs/2005.12872)                                              |            |       |
 | [Objects as Points](https://arxiv.org/abs/1904.07850)                                                                          |            |       |
 | [YOLOv6: A Single-Stage Object Detection Framework for Industrial Applications](https://arxiv.org/abs/2209.02976)              |            |       |
 | [YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors](https://arxiv.org/abs/2207.02696) |            |       |
 | [GLIPv2: Unifying Localization and Vision-Language Understanding](https://arxiv.org/abs/2206.05836)                            |            |       |
 | [RepVGG: Making VGG-style ConvNets Great Again](https://arxiv.org/abs/2101.03697)                                              |            |       |
-|[TOOD: Task-aligned One-stage Object Detection](https://arxiv.org/abs/2108.07755) |            |       |
+|[TOOD: Task-aligned One-stage Object Detection](https://arxiv.org/abs/2108.07755)                                               |            |       |
 
 
