@@ -16,7 +16,7 @@ This is an initial list of recommended papers that we can choose for our present
 | [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641)                               | Duong      |       |
 | [Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition](https://arxiv.org/abs/1406.4729)               |            |       |
 | [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](https://arxiv.org/abs/1506.01497)             |            |       |
-| [SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325)                                                         |            |       |
+| [SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325)                                                         | Dat        |       |
 | [Feature Pyramid Networks for Object Detection](https://arxiv.org/abs/1612.03144)                                              |            |       |
 | [Mask R-CNN](https://arxiv.org/abs/1703.06870)                                                                                 |            |       |
 | [YOLOv3: An Incremental Improvement](https://arxiv.org/abs/1804.02767)                                                         |            |       |
