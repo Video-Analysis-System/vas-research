@@ -5,7 +5,7 @@ We plan to hold a seminar every Friday afternoon. For now, we'll focus on the to
 | Papers                                                                                                                                                                          | Slides | Presenters | Date       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ---------- | ---------- |
 | Auto-training with Github                                                                                                                                                       |        | Hoang      | 02/12/2022 |
-| [Focal Loss for Dense Object Detection](https://arxiv.org/abs/1708.02002) <br> [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641) |        | Duong      | 09/12/2022 |
+| [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641) |        | Duong      | 09/12/2022 |
 | [Attention Is All You Need](https://arxiv.org/abs/1706.03762)                                                                                                                   |        | Tung       | 16/12/2022 |
 | [SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325)                                                                                                          |        | Dat        | 23/12/2022 |
 
@@ -16,7 +16,7 @@ This is an initial list of recommended papers that we can choose for our present
 | Papers                                                                                                                         | Presenters | Notes                      |
 | ------------------------------------------------------------------------------------------------------------------------------ | ---------- | -------------------------- |
 | [Focal Loss for Dense Object Detection](https://arxiv.org/abs/1708.02002)                                                      | Duong      |                            |
-| [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641)                               | Duong      |                            |
+| [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641)                               |       |                            |
 | [Spatial Pyramid Pooling in Deep Convolutional Networks for Visual Recognition](https://arxiv.org/abs/1406.4729)               |            |                            |
 | [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](https://arxiv.org/abs/1506.01497)             |            |                            |
 | [SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325)                                                         | Dat        |                            |
