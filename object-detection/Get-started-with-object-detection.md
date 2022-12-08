@@ -1,4 +1,5 @@
 - [Introduction](#introduction)
+- [How to do applied AI research](#how-to-do-applied-ai-research)
 - [Tutorials](#tutorials)
   - [Dive into deep learning](#dive-into-deep-learning)
 - [Surveys](#surveys)
@@ -7,6 +8,9 @@
 
 # Introduction
 This page aims to collect useful resources for learning object detection, apart from our seminars & monthly coding exercises. Please, share your favourite tutorials, courses and books.
+
+# How to do applied AI research
+https://www.cs197.seas.harvard.edu/
 
 # Tutorials
 ## [Dive into deep learning](https://d2l.ai/chapter_computer-vision/index.html)
