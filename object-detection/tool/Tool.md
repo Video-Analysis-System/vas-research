@@ -13,7 +13,7 @@ https://github.com/ultralytics/google-images-download
 ## 2. Trích xuất và lưu ảnh từ video 
 - Trích xuất các frame của video, lưu lại thành ảnh.
 - StackOverFlow: https://stackoverflow.com/questions/33311153/python-extracting-and-saving-video-frames
-- Github: 
+- Github: https://github.com/Video-Analysis-System/vas-research/blob/master/object-detection/tool/capture_video.py
 - Run code: 
 ```
 python3 capture_video.py --pathIn video/video.mp4 --pathOut image --time 1000 --imageName frame
@@ -22,7 +22,7 @@ python3 capture_video.py --pathIn video/video.mp4 --pathOut image --time 1000 --
 ### 3.1 Sửa đối tương file nhãn 
 - Sửa đổi đốí tượng trong các file nhãn yolo.
 - StackOverFlow: https://stackoverflow.com/questions/66511872/how-to-modify-the-value-of-a-yolo-txt-file-in-python
-- Github : 
+- Github : https://github.com/Video-Analysis-System/vas-research/blob/master/object-detection/tool/edit_object_label.py
 - Run code: 
 ```
 python3 edit_object_label.py --pathLabels labels --number 0
@@ -30,7 +30,7 @@ python3 edit_object_label.py --pathLabels labels --number 0
 ### 3.2 Xóa ảnh không có nhãn trong thư mục
 - Những ảnh sai, ảnh lỗi không có đối tượng được bỏ qua khi đánh nhãn nên chúng không có file nhãn. Để xóa chúng đi: 
 - StackExchange: https://unix.stackexchange.com/questions/528490/python-removing-jpg-files-without-matching-txt-files
-- Github: 
+- Github: https://github.com/Video-Analysis-System/vas-research/blob/master/object-detection/tool/remove_image.py
 - Run code: 
 ```
 python3 remove_image.py --pathLabels labels  --pathImages images 
