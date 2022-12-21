@@ -6,8 +6,8 @@ We plan to hold a seminar every Friday afternoon. For now, we'll focus on the to
 | ------------------------------------------------------------------------------------------------ | ------ | ---------- | ---------- |
 | Auto-training with Github                                                                        |        | Hoang      | 02/12/2022 |
 | [Attention Is All You Need](https://arxiv.org/abs/1706.03762)                                    |        | Tung       | 16/12/2022 |
-| [SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325)                           |        | Dat        | 23/12/2022 |
-| [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641) |        | Duong      | 30/12/2022 |
+| [SSD: Single Shot MultiBox Detector](https://arxiv.org/abs/1512.02325)                           |        | Dat        | 30/12/2022 |
+| [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641) |        | Duong      |  |
 
 
 # List of papers to choose for seminars
