@@ -17,6 +17,8 @@ The dataset is located in the training server under the directory:
 - You might need to open the file "config.py" to change the parameter "batch_size" according to the memory of your GPU. For Rtx2060 super with 7GB, I have to set batch size to 32
 - If you don't want to use a pretrained file, you should set the parameter "pretrain" to False in the "config.py" file
 - Let's start the training process:  CUDA_VISIBLE_DEVICES=0 python train.py --network mobile0.25 
+- It'll create a directory "weights" and store the trained checkpoints there
+- Evaluation: See the instruction in the repo. I had a problem "Out-of-memory" when using GPU for running the evaluation code so in the end, I run the code using CPU
 
 ## Baseline:
 Without using a pretrained model, running the training command above with the Widerface subset we use, I got the following result:
