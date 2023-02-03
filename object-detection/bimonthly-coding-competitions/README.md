@@ -1,16 +1,16 @@
-- [1. Face detection based on Retinaface code](#1-face-detection-based-on-retinaface-code)
+- [1. Face detection](#1-face-detection)
   - [Dataset](#dataset)
   - [Get started](#get-started)
   - [Baseline:](#baseline)
   - [Rules](#rules)
-# 1. Face detection based on Retinaface code
-For our first coding exercise, we'll work on face detection based on Retinaface code. The aim is to experiment with various techniques to improve the accuracy of the baseline model Mobilenet.
+# 1. Face detection
+For our first coding competition, we'll work on face detection. The aim is to experiment with various techniques to improve the accuracy of the baseline Retinface model (with Mobilenet backbone).
 ## Dataset 
 The training set is about 1/3 the original Widerface training set. For validation purpose, we keep all of the Widerface validation set.
 The dataset is located in the training server under the directory:
 /home/ubuntu/duongld12/Pytorch_Retinaface/data
 ## Get started
-- Note that this is only a simple baseline to get started
+- Note that this is only a simple baseline to get started. You don't have to use it for your own codebase
 - Clone the repository https://github.com/biubug6/Pytorch_Retinaface to the location of your choice  
 - cd "Pytorch_Retinaface/data"
 - mkdir widerface
