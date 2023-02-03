@@ -31,7 +31,7 @@ Without using a pretrained model, running the training command above with the Wi
 So yeah, there are a lot of room for improvement here.
 
 ## Rules
-The Retinaface code is only a baseline to get started. You **DON'T HAVE TO USE IT** for your codebase. That is, you're free  to use Yolo, transformers or whatever facy stuffs you can come up with. There are, however, a few rules that you'll have to follow:
+The Retinaface code is only a baseline to get started. You **DON'T HAVE TO USE IT** for your codebase. That is, you're free  to use Yolo models, transformers or whatever fancy stuffs you can come up with. There are, however, a few rules that you'll have to follow:
 - No pretrained models, except for models trained on **Imagenet-1k** only
 - No additional data
 - To limit our scope & at the same time, allow for maximum possible creativity, **the model's parameter should only be less than or equal to 45M**, which is about Resnet101's size.
