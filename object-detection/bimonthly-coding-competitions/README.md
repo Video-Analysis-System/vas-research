@@ -38,7 +38,7 @@ The Retinaface code is only a baseline to get started. You **DON'T HAVE TO USE I
 - To check the model size & MACs, please use one of these 2 tools: [Pytorch-OpCounter](https://github.com/Lyken17/pytorch-OpCounter) and [Flops-Counter](https://github.com/sovrasov/flops-counter.pytorch). Model parameters are not perfect but at least, we'll have some ideas on how fast it might be and how much memory it might take
 - The final score = speed_score + 2 * accuracy_score
 - The winner takes it all (550k yeah)
-- The coding competition takes place in about 2 months from 3rd Februar to 3rd April. We'll check the results & techniques in our seminar on 6th April
+- The coding competition will last 2 months from 3rd February to 3rd April. We'll check the results & techniques in our seminar on 6th April
 - Let's hope that we'll learn many exciting techniques and, with luck, we might invent new and useful algorithms
   
   
