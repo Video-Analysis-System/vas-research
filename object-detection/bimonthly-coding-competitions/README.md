@@ -7,15 +7,14 @@
 For our first coding competition, we'll work on face detection. The aim is to experiment with various techniques to improve the accuracy of the baseline Retinface model (with Mobilenet backbone).
 ## Dataset 
 The training set is about 1/3 the original Widerface training set. For validation purpose, we keep all of the Widerface validation set.
-The dataset is located in the training server under the directory:
-/home/ubuntu/duongld12/Pytorch_Retinaface/data
+The dataset is compressed and put in in the training server as followed:
+/media/ubuntu/DATA/vinh/face-datasets/widerface.zip
+
 ## Get started
 - Note that this is only a simple baseline to get started. You don't have to use it for your own codebase
 - Clone the repository https://github.com/biubug6/Pytorch_Retinaface to the location of your choice  
 - cd "Pytorch_Retinaface/data"
-- mkdir widerface
-- cd widerface
-- Copy the subdirectories "train" and "val" of the dataset (at the location specified in the previous section) to the current "widerface" directory
+- Copy the data file (see the location above) here, unzip it. The resulting directory should be "widerface"
 - You might need to open the file "config.py" to change the parameter "batch_size" according to the memory of your GPU. For Rtx2060 super with 7GB, I have to set batch size to 32
 - If you don't want to use a pretrained file, you should set the parameter "pretrain" to False in the "config.py" file
 - Let's start the training process:  CUDA_VISIBLE_DEVICES=0 python train.py --network mobile0.25 
