@@ -13,7 +13,7 @@ Ultralytics now uses an object-oriented design so that it can train/infer multip
 
 - The DetectionModel class overrides the method “init_criterion” to offer 2 choices for loss E2EDetectLoss and v8DetectionLoss
 
-- All the loss classes are in the file “ultralytics/ultralytics/utils/loss.py”. See my subsection “Losses”
+- All the loss classes are in the file “ultralytics/ultralytics/utils/loss.py”. See the section “Losses” 
 
 # Losses
 - All the loss classes are in the file “ultralytics/ultralytics/utils/loss.py”. The main detection loss is v8DetectionLoss. 
