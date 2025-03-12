@@ -1,7 +1,7 @@
 # Introduction:
 Ultralytics now uses an object-oriented design so that it can train/infer multiple Yolo versions and other object detection models. It's very convenient for casual users but the code is now more difficult to understand than, say Yolov5's code.
 
-# Package components
+# Code components
 
 - The main training loop is now in the class BaseTrainer in “ultralytics/ultralytics/engine/trainer.py”. Specific trainers for detection, segmentation, ... have their separate classes located in different packages
 
